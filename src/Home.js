@@ -13,12 +13,24 @@ export const Home = () => {
       console.log("Successfully saved.");
     });
   };
+
+  const getData = () => {
+    const API_DATABASE = Moralis.Object.extend("API_DATABASE");
+    const query = new Moralis.Query(API_DATABASE);
+    query.find().then((results) => {
+      console.log(results);
+    });
+  };
   return (
     <Box>
       Home
       <Button onClick={sendData} isLoading={isUserUpdating}>
         {" "}
         Send API Data
+      </Button>
+      <Button onClick={getData} isLoading={isUserUpdating}>
+        {" "}
+        Get API Data
       </Button>
     </Box>
   );
