@@ -100,6 +100,15 @@ export const Home = () => {
     });
   };
 
+  const getSortedData = () => {
+    const API_DATABASE = Moralis.Object.extend("API_DATABASE");
+    const query = new Moralis.Query(API_DATABASE);
+    query.descending("Likes");
+    query.find().then((results) => {
+      console.log(results);
+    });
+  };
+
   return (
     <Box>
       Home
@@ -130,6 +139,10 @@ export const Home = () => {
       <Button onClick={likeAPI} isLoading={isUserUpdating}>
         {" "}
         Like API
+      </Button>
+      <Button onClick={getSortedData} isLoading={isUserUpdating}>
+        {" "}
+        Get Sorted Data
       </Button>
     </Box>
   );
