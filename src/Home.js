@@ -84,6 +84,22 @@ export const Home = () => {
     }
   };
 
+  const likeAPI = () => {
+    const API_DATABASE = Moralis.Object.extend("API_DATABASE");
+    const query = new Moralis.Query(API_DATABASE);
+    query.equalTo("Name", "My Cool API");
+    query.equalTo("User", Moralis.User.current());
+    query.find().then((results) => {
+      const apiDatabase = results[0];
+      if (apiDatabase) {
+        apiDatabase.increment("Likes");
+        apiDatabase.save().then(() => {
+          console.log("Successfully saved.");
+        });
+      } else alert("No data found");
+    });
+  };
+
   return (
     <Box>
       Home
@@ -110,6 +126,10 @@ export const Home = () => {
       <Button onClick={deleteSpecificData} isLoading={isUserUpdating}>
         {" "}
         Delete User Specific Data
+      </Button>
+      <Button onClick={likeAPI} isLoading={isUserUpdating}>
+        {" "}
+        Like API
       </Button>
     </Box>
   );
