@@ -1,4 +1,4 @@
-import { Container, Heading, Flex, Spacer, Avatar } from "@chakra-ui/react";
+import { Center, Container, Heading, Flex, Spacer, Avatar } from "@chakra-ui/react";
 import { useMoralis } from "react-moralis";
 import { Auth } from "./Auth";
 import { Switch, Route, Redirect, Link } from "react-router-dom";
@@ -10,9 +10,11 @@ function App() {
 
   return (
     <Container>
+       <Center color="white"fontWeight="bold" fontSize="48px">
+        API Marketplace
+        </Center>
       <Flex my={6}>
         <Link to="/">
-          <Heading>Home</Heading>
         </Link>
         <Spacer ml={2} />
         {isAuthenticated && (
@@ -21,16 +23,16 @@ function App() {
           </Link>
         )}
         {isAuthUndefined && <Heading>Loading...</Heading>}
-        {/* <Spacer/> */}
+         <Spacer ml={2}/> 
         {isAuthenticated && ( //if isAuthenticated  is true then show logout button
           <button onClick={logout}>Logout</button>
         )}
       </Flex>
 
-      <Heading mb={6}>
-        Welcome to the Market Place,{" "}
+      <Center mb={6} fontSize="25px">
+        Welcome to the Market Place,<br/>{" "}
         {user ? user.attributes.username : "Authenticate Please"}
-      </Heading>
+      </Center>
       {isAuthenticated ? (
         <Switch>
           <Route path="/" exact>
