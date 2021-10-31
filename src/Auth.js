@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useMoralis } from "react-moralis";
-import { Button, Stack, Input, Text } from "@chakra-ui/react";
+import { Button, Stack, Input, Text, Container } from "@chakra-ui/react";
 import { ErrorBox } from "./Error";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const SignUp = () => {
   const { signup } = useMoralis();
@@ -9,20 +10,22 @@ const SignUp = () => {
   const [password, setPassword] = useState();
 
   return (
-    <Stack spacing={3}>
-      <Input
-        placeholder="Email"
-        value={email}
-        onChange={(event) => setEmail(event.currentTarget.value)}
-      />
-      <Input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(event) => setPassword(event.currentTarget.value)}
-      />
-      <Button onClick={() => signup(email, password, email)}>Sign up</Button>
-    </Stack>
+    <Container className="mx-auto w-75">
+      <Stack spacing={3}>
+        <Input
+          placeholder="Email"
+          value={email}
+          onChange={(event) => setEmail(event.currentTarget.value)}
+        />
+        <Input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.currentTarget.value)}
+        />
+        <Button onClick={() => signup(email, password, email)}>Sign up</Button>
+      </Stack>
+    </Container>
   );
 };
 
@@ -32,20 +35,22 @@ const Login = () => {
   const [password, setPassword] = useState();
 
   return (
-    <Stack spacing={3}>
-      <Input
-        placeholder="Email"
-        value={email}
-        onChange={(event) => setEmail(event.currentTarget.value)}
-      />
-      <Input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(event) => setPassword(event.currentTarget.value)}
-      />
-      <Button onClick={() => login(email, password)}>Login</Button>
-    </Stack>
+    <Container className="mx-auto w-75">
+      <Stack spacing={3}>
+        <Input
+          placeholder="Email"
+          value={email}
+          onChange={(event) => setEmail(event.currentTarget.value)}
+        />
+        <Input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.currentTarget.value)}
+        />
+        <Button onClick={() => login(email, password)}>Login</Button>
+      </Stack>
+    </Container>
   );
 };
 
@@ -57,9 +62,11 @@ export const Auth = () => {
       {authError && (
         <ErrorBox title="Authentication Failed" message={authError.message} />
       )}
-      <Button isLoading={isAuthenticating} onClick={() => authenticate()}>
-        Authenticate via Metamask
-      </Button>
+      <Container className="mx-auto w-75 text-center">
+        <Button isLoading={isAuthenticating} onClick={() => authenticate()}>
+          Authenticate via Metamask
+        </Button>
+      </Container>
       <Text textAlign="center">
         <em>or</em>
       </Text>
