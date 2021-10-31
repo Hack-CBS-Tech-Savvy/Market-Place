@@ -41,7 +41,7 @@ export const AddAPI = () => {
           />
         </Box>
         <Box>
-          <Text>API Link</Text>
+          <Text>API Documentation Link</Text>
           <Input value={apiLink} onChange={(e) => setAPILink(e.target.value)} />
         </Box>
         <Button onClick={sendData} isLoading={isUserUpdating}>

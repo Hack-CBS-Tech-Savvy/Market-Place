@@ -3,13 +3,6 @@ import { useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
 import { ErrorBox } from "./Error";
 import {
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-} from "@chakra-ui/react";
-import {
   Table,
   Thead,
   Tbody,
@@ -48,12 +41,12 @@ export const UserAPI = () => {
           Update API Data
         </Button>
         <Table variant="striped" colorScheme="teal">
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
+          <TableCaption>All your listed APIs</TableCaption>
           <Thead>
             <Tr>
               <Th>API Name</Th>
               <Th isTruncated>API Description</Th>
-              <Th>multiply by</Th>
+              <Th>Link to the Docs</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -61,18 +54,18 @@ export const UserAPI = () => {
               apiData.map((item) => {
                 return (
                   <Tr key={item.id}>
-                    <Td>{item.id}</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>{item.get("Name")}</Td>
+                    <Td>{item.get("Description")}</Td>
+                    <Td>{item.get("URL")}</Td>
                   </Tr>
                 );
               })}
           </Tbody>
           <Tfoot>
             <Tr>
-              <Th>To convert</Th>
-              <Th>into</Th>
-              <Th isNumeric>multiply by</Th>
+              <Th>API Name</Th>
+              <Th>Description</Th>
+              <Th>Docs</Th>
             </Tr>
           </Tfoot>
         </Table>
