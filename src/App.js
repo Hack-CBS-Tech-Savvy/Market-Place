@@ -6,6 +6,8 @@ import { Home } from "./Home";
 import { Profile } from "./Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
+import { AddAPI } from "./addAPI";
+import { UserAPI } from "./UserAPI";
 function App() {
   const { isAuthenticated, logout, user, isAuthUndefined } = useMoralis();
 
@@ -28,7 +30,7 @@ function App() {
         </div>
       </div>
 
-      {/* <Flex my={6}></Flex> */}
+      <Flex my={6}></Flex>
 
       <div mb={3} className="h3 fw-bold title-height">
         <div className="heading">
@@ -49,6 +51,12 @@ function App() {
           </Route>
           <Route path="/profile" exact>
             <Profile />
+          </Route>
+          <Route path="/addAPI" exact>
+            <AddAPI />
+          </Route>
+          <Route path="/getUserAPI" exact>
+            <UserAPI />
           </Route>
         </Switch>
       ) : (

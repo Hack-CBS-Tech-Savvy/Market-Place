@@ -2,6 +2,7 @@ import { Box, Button } from "@chakra-ui/react";
 import { useMoralis } from "react-moralis";
 import { ErrorBox } from "./Error";
 import Navbar from "react-bootstrap/Navbar";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -119,18 +120,16 @@ export const Home = () => {
         <Nav className="me-auto">
           <Nav.Link>
             {" "}
-            <Button onClick={sendData} isLoading={isUserUpdating}>
-              {" "}
-              Send API Data
-            </Button>{" "}
+            <Link to="/addAPI">
+              <Button isLoading={isUserUpdating}> Send API Data</Button>{" "}
+            </Link>
           </Nav.Link>
 
           <Nav.Link>
             {" "}
-            <Button onClick={getData} isLoading={isUserUpdating}>
-              {" "}
-              Get API Data
-            </Button>
+            <Link to="/getUserAPI">
+              <Button isLoading={isUserUpdating}> Your APIs</Button>
+            </Link>
           </Nav.Link>
 
           <Nav.Link>
