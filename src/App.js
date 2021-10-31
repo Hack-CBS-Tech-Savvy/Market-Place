@@ -8,8 +8,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.css";
 import { AddAPI } from "./addAPI";
 import { UserAPI } from "./UserAPI";
+import { Button } from "@chakra-ui/react";
 function App() {
-  const { isAuthenticated, logout, user, isAuthUndefined } = useMoralis();
+  const { isAuthenticated, logout, user, isAuthUndefined, isUserUpdating } =
+    useMoralis();
 
   return (
     <main>
@@ -25,7 +27,10 @@ function App() {
           {isAuthUndefined && <Heading>Loading...</Heading>}
           {/* <Spacer/> */}
           {isAuthenticated && ( //if isAuthenticated  is true then show logout button
-            <button onClick={logout}>Logout</button>
+            <Button onClick={logout} isLoading={isUserUpdating}>
+              {" "}
+              Logout
+            </Button>
           )}
         </div>
       </div>
