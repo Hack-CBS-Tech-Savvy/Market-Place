@@ -1,6 +1,10 @@
 import { Box, Button } from "@chakra-ui/react";
 import { useMoralis } from "react-moralis";
 import { ErrorBox } from "./Error";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Home = () => {
   const { Moralis, isUserUpdating } = useMoralis();
@@ -110,40 +114,69 @@ export const Home = () => {
   };
 
   return (
-    <Box>
-      Home
-      <Button onClick={sendData} isLoading={isUserUpdating}>
-        {" "}
-        Send API Data
-      </Button>
-      <Button onClick={getData} isLoading={isUserUpdating}>
-        {" "}
-        Get API Data
-      </Button>
-      <Button onClick={updateData} isLoading={isUserUpdating}>
-        {" "}
-        Update API Data
-      </Button>
-      <Button onClick={deleteData} isLoading={isUserUpdating}>
-        {" "}
-        Delete API Data
-      </Button>
-      <Button onClick={getUserSpecificData} isLoading={isUserUpdating}>
-        {" "}
-        Get User Specific Data
-      </Button>
-      <Button onClick={deleteSpecificData} isLoading={isUserUpdating}>
-        {" "}
-        Delete User Specific Data
-      </Button>
-      <Button onClick={likeAPI} isLoading={isUserUpdating}>
-        {" "}
-        Like API
-      </Button>
-      <Button onClick={getSortedData} isLoading={isUserUpdating}>
-        {" "}
-        Get Sorted Data
-      </Button>
-    </Box>
+    <div>
+      <Navbar bg="dark" className="navigation-bar-margin" variant="dark">
+        <Nav className="me-auto">
+          <Nav.Link>
+            {" "}
+            <Button onClick={sendData} isLoading={isUserUpdating}>
+              {" "}
+              Send API Data
+            </Button>{" "}
+          </Nav.Link>
+
+          <Nav.Link>
+            {" "}
+            <Button onClick={getData} isLoading={isUserUpdating}>
+              {" "}
+              Get API Data
+            </Button>
+          </Nav.Link>
+
+          <Nav.Link>
+            <Button onClick={updateData} isLoading={isUserUpdating}>
+              {" "}
+              Update API Data
+            </Button>
+          </Nav.Link>
+
+          <Nav.Link>
+            {" "}
+            <Button onClick={deleteData} isLoading={isUserUpdating}>
+              {" "}
+              Delete API Data
+            </Button>
+          </Nav.Link>
+
+          <Nav.Link>
+            {" "}
+            <Button onClick={getUserSpecificData} isLoading={isUserUpdating}>
+              {" "}
+              Get User Specific Data
+            </Button>
+          </Nav.Link>
+
+          <Nav.Link>
+            <Button onClick={deleteSpecificData} isLoading={isUserUpdating}>
+              {" "}
+              Delete User Specific Data
+            </Button>
+          </Nav.Link>
+          <Nav.Link>
+            <Button onClick={likeAPI} isLoading={isUserUpdating}>
+              {" "}
+              Like API
+            </Button>
+          </Nav.Link>
+
+          <Nav.Link>
+            <Button onClick={getSortedData} isLoading={isUserUpdating}>
+              {" "}
+              Get Sorted Data
+            </Button>
+          </Nav.Link>
+        </Nav>
+      </Navbar>
+    </div>
   );
 };

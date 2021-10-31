@@ -1,0 +1,21 @@
+.logout-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  z-index: 1;
+}
+
+.home-btn {
+  position: relative;
+  margin-left: 10px;
+  top: 25px;
+}
+
+.title-height {
+  height: 70px;
+}
+
+.navigation-bar-margin {
+  margin-left: 10px;
+  margin-right: 10px;
+}

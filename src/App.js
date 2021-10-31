@@ -4,33 +4,44 @@ import { Auth } from "./Auth";
 import { Switch, Route, Redirect, Link } from "react-router-dom";
 import { Home } from "./Home";
 import { Profile } from "./Profile";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/style.css";
 function App() {
   const { isAuthenticated, logout, user, isAuthUndefined } = useMoralis();
 
   return (
-    <Container>
-      <Flex my={6}>
-        <Link to="/">
-          <Heading>Home</Heading>
-        </Link>
-        <Spacer ml={2} />
-        {isAuthenticated && (
-          <Link to="/profile">
-            <Avatar name={user ? user.attributes.username : "NEW"} />{" "}
-          </Link>
-        )}
-        {isAuthUndefined && <Heading>Loading...</Heading>}
-        {/* <Spacer/> */}
-        {isAuthenticated && ( //if isAuthenticated  is true then show logout button
-          <button onClick={logout}>Logout</button>
-        )}
-      </Flex>
+    <main>
+      <div>
+        <div className="logout-btn">
+          <Spacer ml={2} />
+          {isAuthenticated && (
+            <Link to="/profile">
+              <Avatar name={user ? user.attributes.username : "NEW"} />{" "}
+            </Link>
+          )}
+          &nbsp;&nbsp;
+          {isAuthUndefined && <Heading>Loading...</Heading>}
+          {/* <Spacer/> */}
+          {isAuthenticated && ( //if isAuthenticated  is true then show logout button
+            <button onClick={logout}>Logout</button>
+          )}
+        </div>
+      </div>
 
-      <Heading mb={6}>
-        Welcome to the Market Place,{" "}
-        {user ? user.attributes.username : "Authenticate Please"}
-      </Heading>
+      {/* <Flex my={6}></Flex> */}
+
+      <div mb={3} className="h3 fw-bold title-height">
+        <div className="heading">
+          <div className="home-btn">
+            <Link to="/">Home</Link>
+          </div>
+          <div className="text-center">
+            Welcome to the Market Place,{" "}
+            {user ? user.attributes.username : "Authenticate Please"}
+          </div>
+        </div>
+      </div>
+      {/*  */}
       {isAuthenticated ? (
         <Switch>
           <Route path="/" exact>
@@ -46,7 +57,7 @@ function App() {
           <Auth />
         </>
       )}
-    </Container>
+    </main>
   );
 }
 
